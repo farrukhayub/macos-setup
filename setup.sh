@@ -41,6 +41,9 @@ process_option() {
     'system')
       source scripts/system.sh
       break;;
+    'test')
+      source scripts/test.sh
+      break;;
       
     'q')
       break;;
