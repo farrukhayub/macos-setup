@@ -1,17 +1,22 @@
 cask_args appdir: "/Applications"
 
 # Tools
+brew "mas"
 cask "spectacle"
 cask "keka"
 cask "balenaetcher"
 cask "mounty"
 cask "flash-npapi"
-cask "google-backup-and-sync"
+cask "google-drive"
 cask "keepingyouawake"
 cask "webpquicklook"
 cask "balenaetcher"
 brew "wget"
-
+cask "raycast"
+brew "zsh"
+brew "zsh-completions"
+brew "zsh-syntax-highlighting"
+brew "zsh-autosuggestions"
 
 # Apps
 cask "spotify"
@@ -25,6 +30,7 @@ cask "gimp"
 cask "iina"
 cask "grammarly"
 cask "kindle"
+brew "miro"
 
 
 # Browsers
@@ -71,10 +77,9 @@ cask "vmware-fusion"
 cask "datagrip"
 cask "rider"
 brew "python@3"
-tap 'neovim/neovim' || true
-brew 'neovim'
 brew "node"
 brew "go"
+brew "awscli"
 
 
 

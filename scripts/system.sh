@@ -35,6 +35,13 @@ echo ""
 # sudo gem update --system 
 # echo ""
 
+# Enable rosetta2 form apple chips
+CPUTYPE=`sysctl -n machdep.cpu.brand_string`
+echo $CPUTYPE
+if [[ "$CPUTYPE" == *"Apple"* ]]; then
+/usr/sbin/softwareupdate --install-rosetta --agree-to-license
+fi
+
 echo "[SYSTEM] macOS pref"
 
 
@@ -81,6 +88,9 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
+#Focus follows mouse on terminal
+defaults write com.apple.Terminal FocusFollowsMouse -string YES
+
 # Enable “natural” (Lion-style) scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 
@@ -89,6 +99,11 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+# Deactivate remote management
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -stop
+# Remove Desktop Sharing 
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -configure -access -off
 
 ############
 #  FINDER  #
@@ -196,6 +211,11 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 
+# Disable icon bounce on Dock
+defaults write com.apple.dock no-bouncing -bool false && killall Dock
+
+#Show Hidden Apps/Icons
+defaults write com.apple.dock showhidden -bool true && killall Dock
 
 ###############
 #  SPOTLIGHT  #

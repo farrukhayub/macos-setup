@@ -16,6 +16,7 @@ process_option() {
       source scripts/system.sh
       brew bundle
       bundle install
+      source scripts/mas.sh
       source scripts/dev.sh
       source scripts/git.sh
       source scripts/ssh.sh
@@ -40,6 +41,7 @@ process_option() {
       break;;
     'system')
       source scripts/system.sh
+      source scripts/mas.sh
       break;;
     'test')
       source scripts/test.sh
